@@ -5,8 +5,8 @@
 
 namespace DestServer
 {
-    const QString SERVER_IP                       =        "127.0.0.1";//服务器ip地址
-    const quint16 SERVER_PORT                     =         80;//服务器端口号
+    const QString SERVER_IP                       =        "192.168.1.1";//服务器ip地址
+    const quint16 SERVER_PORT                     =         8000;//服务器端口号
 }
 
 namespace CommandCode
