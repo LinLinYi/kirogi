@@ -1,0 +1,49 @@
+﻿#ifndef DNOTIFYINFO_H
+#define DNOTIFYINFO_H
+
+#include <QObject>
+#include "GlobalDefine.hpp"
+
+class DNotifyInfo : public QObject
+{
+public:
+    explicit DNotifyInfo(QObject* parent = 0);
+    explicit DNotifyInfo(InfoType type, QString& msgHint);
+    virtual ~DNotifyInfo();
+
+public:
+    void setGroupID( const quint64 grpID ) { groupID = grpID; }
+    void setInfoType(const InfoType type) { infoType = type; }
+    void setInfoName(const QString& name) { infoName = name; }
+    void setInfoHint(const QString& hint) { infoHint = hint; }
+    void setInfoImg(const QString& img) { infoImg = img; }
+    void setInfoTime(const QString& time) { infoTime = time; }
+    void setRemarksID(const quint64 data) { remarksID = data; }
+    void setUnreadCount(const quint64 count) { unReadCount = count; }
+
+    quint64 getGroupID() { return groupID; }
+    InfoType getInfoType() { return infoType; }
+    QString& getInfoName() { return infoName; }
+    QString& getInfoTime() { return infoTime; }
+    QString& getInfoHint() { return infoHint; }
+    quint16 getUnreadCount() { return unReadCount; }
+    QString& getInfoImg() { return infoImg; }
+    quint64 getRemarksID() { return remarksID; }
+
+    DNotifyInfo& operator=(const DNotifyInfo& info);
+
+private:
+    quint64 groupID;           //分组ID
+    InfoType infoType;         //通知类型
+    QString infoName;          //通知名称
+    QString infoTime;          //通知时间
+    QString infoHint;          //通知提示
+    quint16 unReadCount;       //未读消息数目
+    QString infoImg;           //通知图片
+    quint64 remarksID;         //备注ID(根据情况使用)
+
+private:
+    QString getCurrentTime();
+};
+
+#endif // DNOTIFYINFO_H

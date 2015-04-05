@@ -1,0 +1,46 @@
+﻿#ifndef UDPTRANSMIT_H
+#define UDPTRANSMIT_H
+
+#include <QUdpSocket>
+
+/*! \class NetworkManager
+ *  \brief 这是一个用来管理网络连接的类。
+ */
+class UdpTransmit : public QObject
+{
+    Q_OBJECT
+public:
+    UdpTransmit(QString& ip, quint16 port = 0, QObject* parent = 0);
+    UdpTransmit(QObject* parent = 0);
+    ~UdpTransmit();
+
+public:
+    /*! 建立网络连接并接收数据*/
+    void startConnect();
+    /*! 发送数据包*/
+    quint16 sendData(const char* outStr, quint16 len);
+    /*! 关闭网络连接*/
+    void stopConnect();
+
+    /*! 设置目标IP*/
+    void setDestIP(QString ip);
+    /*! 设置目标端口*/
+    void setDestPort(quint16 port);
+
+signals:
+    /*! 发射数据到业务层*/
+    void readyRead(char* recvData, quint16 dataLen);
+
+public slots:
+    /*! 处理接收数据的槽函数*/
+    void on_processPendingData();
+
+private:
+    QUdpSocket *udpSocket;      /*! udp套接字,发送和接收所有数据包*/
+    QHostAddress destIP;        /*! 服务器IP地址*/
+    quint16 destPort;           /*! 服务器端口号*/
+    quint16 localPort;          /*! 本地绑定端口号*/
+};
+
+#endif //UDPTRANSMIT_H
+

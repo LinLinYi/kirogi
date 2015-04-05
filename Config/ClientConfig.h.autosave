@@ -1,0 +1,19 @@
+﻿#ifndef CLIENTCONFIG_H
+#define CLIENTCONFIG_H
+
+#include <string.h>
+
+class ClientConfig
+{
+private:
+    ClientConfig();
+
+public:
+    static ClientConfig* getConfig = NULL;
+    
+};
+
+
+
+
+#endif // CLIENTCONFIG_H

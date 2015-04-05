@@ -1,0 +1,13 @@
+﻿#ifndef UDPBROADCAST_H
+#define UDPBROADCAST_H
+
+#include <QObject>
+
+class UdpBroadCast : public QObject
+{
+public:
+    explicit UdpBroadCast(QObject* parent = 0);
+    virtual ~UdpBroadCast();
+};
+
+#endif // UDPBROADCAST_H

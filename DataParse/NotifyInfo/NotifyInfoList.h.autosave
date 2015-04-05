@@ -1,0 +1,27 @@
+﻿#ifndef NOTIFYINFOLIST_H
+#define NOTIFYINFOLIST_H
+
+#include <QObject>
+#include "NotifyOverview.h"
+
+class NotifyInfoList : public QObject
+{
+public:
+    explicit NotifyInfoList(QObject* parent = 0);
+    virtual ~NotifyInfoList();
+
+public:
+    QList<DNotifyInfo*>& fetchList();
+    void append(DNotifyInfo* info);
+    void loadDataSource();
+    void remove();
+
+private:
+    QList<NotifyInfo*> infoList;
+
+private:
+    void insertList(NotifyInfo* info);
+    void insertDB(NotifyInfo* info);
+};
+
+#endif // DNOTIFYINFOLIST_H

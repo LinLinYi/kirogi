@@ -1,0 +1,18 @@
+﻿#ifndef WINSMANAGER_H
+#define WINSMANAGER_H
+
+#include "UserLogin.h"
+#include "CoTrustMainWin.h"
+
+class WinsManager : public QObject
+{
+public:
+    WinsManager(QObject* parent = 0);
+    ~WinsManager();
+
+public:
+    UserLoginDialog* userLoginWin;
+    CoTrustMainWin* CoTrustMainWin;
+};
+
+#endif // WINMANAGER_H
